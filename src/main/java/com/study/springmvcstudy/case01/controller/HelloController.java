@@ -17,7 +17,7 @@ public class HelloController {
 	// 1. 取得字串資料
 	// 路徑: /welcome
 	@RequestMapping("/welcome")
-	@ResponseBody //  直接根據回傳執型別回應
+	@ResponseBody // 直接根據回傳執型別回應
 	public String welcome() {
 		return "Hello SpringMVC "+new Date(); 
 	}
