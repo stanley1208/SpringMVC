@@ -78,8 +78,8 @@ public class HelloController {
 	@GetMapping("/calc/{exp}")
 	@ResponseBody
 	public String calcExp(@PathVariable("exp") String exp,
-						@RequestParam(value = "x",required = false,defaultValue = "0")Integer x,
-						@RequestParam(value = "y",required = false,defaultValue = "0")Integer y) {
+						  @RequestParam(value = "x",required = false,defaultValue = "0")Integer x,
+						  @RequestParam(value = "y",required = false,defaultValue = "0")Integer y) {
 		int result=0;
 		switch (exp) {
 		case "add":
@@ -94,6 +94,6 @@ public class HelloController {
 			return "Result: exp value error";
 		
 		}
-		return String.format("Result: %d + %d = %d",x,y, result);
+		return String.format("Result: %d %s %d = %d",x,y, result);
 	}
 }
