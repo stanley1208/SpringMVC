@@ -22,6 +22,19 @@
 		<li>
 		<a href="./mvc/case01/hello/exam/75">./mvc/case01/hello/exam/75</a>
 		</li>
+		<li>
+		<a href="./mvc/case01/hello/calc/add?x=30&y=20">./mvc/case01/hello/calc/add?x=30&y=20</a>
+		</li>
+		<li>
+		<a href="./mvc/case01/hello/path/namejohn/java8">./path/namejohn/java8</a>
+		</li>
+		<li>
+		<a href="./mvc/case01/hello/age?age=18&age=19&age=20">./age?age=18&age=19&age=20</a>
+		</li>
+		<li>
+		<a href="./mvc/case01/hello/javaexam?score=80&score=100&score=50">./javaexam?score=80&score=100&score=50</a>
+		</li>
+		
 	</ol>
 </body>
 </html>

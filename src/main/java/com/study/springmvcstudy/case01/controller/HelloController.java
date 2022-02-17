@@ -2,6 +2,8 @@ package com.study.springmvcstudy.case01.controller;
 
 
 import java.util.Date;
+import java.util.IntSummaryStatistics;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.annotation.JacksonInject.Value;
+import com.study.springmvcstudy.case01.entity.User;
 
 @Controller
 @RequestMapping("/case01/hello")
@@ -87,13 +90,61 @@ public class HelloController {
 			break;
 			
 		case "sub":
-			result=x+y;
+			result=x-y;
 			break;
 
 		default:
 			return "Result: exp value error";
 		
 		}
-		return String.format("Result: %d %s %d = %d",x,y, result);
+		return String.format("Result: %d %s %d = %d",x,(exp.equals("add"))?"+":"-",y, result);
 	}
+	
+	/*
+	 * 6. @PathVariable (萬用字元： * 任意多字、? 任意一字)
+	 * 路徑：/path/namejohn/java8
+	 * 路徑：/path/nameTaipei/java7
+	 * 路徑：/path/name1234/java6
+	 */
+	@GetMapping("path/name*/java?")
+	@ResponseBody
+	public String path() {
+		return "Path OK!";
+	}
+	
+	/*
+	 * 7. 多筆參數資料
+	 * 子路徑：/age?age=18&age=19&age=20
+	 * 並計算平均: avg of age = 19.0
+	 */
+	@GetMapping("/age")
+	@ResponseBody
+	public String age(@RequestParam("age")List<Integer>ageList) {
+		double avgOfAge=ageList.stream().mapToInt(Integer::intValue).average().getAsDouble();
+		return String.format("avg of age = %.1f", avgOfAge);
+	}
+	/* 
+	 * 8. 得到多筆Java考試成績的資料 (Lab 練習)
+     * 路徑：/javaexam?score=80&score=100&score=50
+     * 求出最高分、最低分、平均與總分 ==> hight: 100, low: 50, avg: 76.67, sum: 230
+    */
+	@GetMapping("/javaexam")
+	@ResponseBody
+	public String javaexam(@RequestParam("score") List<Integer> scores) {
+		IntSummaryStatistics stat=scores.stream().mapToInt(Integer::intValue).summaryStatistics();
+		return String.format("height: %d, low: %d, avg: %.2f, sum: %d",stat.getMax(),stat.getMin(),stat.getAverage(),stat.getSum() );
+	}
+	
+	/*
+	 * 9. pojo(entity)
+	 * 有一個User.java 裡面有name與age這兩個物件屬性
+	 * 子路徑:/user?name=John&age=18
+	 * 可以進行自動匹配
+	 * */
+	@GetMapping(value = "/user")
+	@ResponseBody
+	public String getUser(User user) {
+		return user.toString();
+	}
+	
 }
