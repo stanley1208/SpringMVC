@@ -4,6 +4,7 @@ package com.study.springmvcstudy.case01.controller;
 import java.util.Date;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
@@ -145,6 +146,19 @@ public class HelloController {
 	@ResponseBody
 	public String getUser(User user) {
 		return user.toString();
+	}
+	
+	/*
+	 * 10. Map 參數
+	 * 路徑：/person?name=John&score=100&age=18&pass=true
+	 * 路徑：/person?name=Mary&score=90&level=2
+	 * 常與於各 form 表單傳來的不統一參數
+	 * */
+	@GetMapping(value = "/person")
+	@ResponseBody
+	//public String getPerson(User user,@RequestParam(value = "score",required = false)Integer score) {
+	public String getPerson(@RequestParam Map<String, String>person) {	
+		return person.toString();
 	}
 	
 }

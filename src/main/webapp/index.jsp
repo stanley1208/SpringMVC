@@ -26,13 +26,19 @@
 		<a href="./mvc/case01/hello/calc/add?x=30&y=20">./mvc/case01/hello/calc/add?x=30&y=20</a>
 		</li>
 		<li>
-		<a href="./mvc/case01/hello/path/namejohn/java8">./path/namejohn/java8</a>
+		<a href="./mvc/case01/hello/path/namejohn/java8">./mvc/case01/hello/path/namejohn/java8</a>
 		</li>
 		<li>
-		<a href="./mvc/case01/hello/age?age=18&age=19&age=20">./age?age=18&age=19&age=20</a>
+		<a href="./mvc/case01/hello/age?age=18&age=19&age=20">./mvc/case01/hello/age?age=18&age=19&age=20</a>
 		</li>
 		<li>
-		<a href="./mvc/case01/hello/javaexam?score=80&score=100&score=50">./javaexam?score=80&score=100&score=50</a>
+		<a href="./mvc/case01/hello/javaexam?score=80&score=100&score=50">./mvc/case01/hello/javaexam?score=80&score=100&score=50</a>
+		</li>
+		<li>
+		<a href="./mvc/case01/hello/user?name=John&age=18">./mvc/case01/hello/user?name=John&age=18</a>
+		</li>
+		<li>
+		<a href="./mvc/case01/hello/person?name=Mary&score=90&level=2">./mvc/case01/hello/person?name=Mary&score=90&level=2</a>
 		</li>
 		
 	</ol>
