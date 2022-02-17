@@ -67,5 +67,33 @@ public class HelloController {
 		return String.format("score: %d %s", score,(score>=60)?"Pass":"Fail");
 	}
 	
-	
+	/*
+	 * 5. @RequestParam + @PathVariable (Lab 練習)
+	 * 路徑：/calc/add?x=30&y=20  -> Result：30 + 20 =  50
+	 * 路徑：/calc/sub?x=30&y=20  -> Result：30 - 20 =  10
+	 * 路徑：/calc/sub?y=20       -> Result： 0 - 20 = -20
+	 * 路徑：/calc/add            -> Result： 0 +  0 =   0 
+	 * 路徑：/calc/div            -> Result： exp value error
+	 */
+	@GetMapping("/calc/{exp}")
+	@ResponseBody
+	public String calcExp(@PathVariable("exp") String exp,
+						@RequestParam(value = "x",required = false,defaultValue = "0")Integer x,
+						@RequestParam(value = "y",required = false,defaultValue = "0")Integer y) {
+		int result=0;
+		switch (exp) {
+		case "add":
+			result=x+y;
+			break;
+			
+		case "sub":
+			result=x+y;
+			break;
+
+		default:
+			return "Result: exp value error";
+		
+		}
+		return String.format("Result: %d + %d = %d",x,y, result);
+	}
 }
