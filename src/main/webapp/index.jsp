@@ -40,7 +40,9 @@
 		<li>
 		<a href="./mvc/case01/hello/person?name=Mary&score=90&level=2">./mvc/case01/hello/person?name=Mary&score=90&level=2</a>
 		</li>
-		
+		<li>
+		<a href="./mvc/case01/hello/sessionInfo">./mvc/case01/hello/sessionInfo</a>
+		</li>
 	</ol>
 </body>
 </html>
