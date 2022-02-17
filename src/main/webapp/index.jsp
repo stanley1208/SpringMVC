@@ -16,6 +16,12 @@
 		<li>
 		<a href="./mvc/case01/hello/sayhi?name=stanley&age=999">./mvc/case01/hello/sayhi?name=stanley&age=999</a>
 		</li>
+		<li>
+		<a href="./mvc/case01/hello/bmi?h=170&w=60">./mvc/case01/hello/bmi?h=170&w=60</a>
+		</li>
+		<li>
+		<a href="./mvc/case01/hello/exam/75">./mvc/case01/hello/exam/75</a>
+		</li>
 	</ol>
 </body>
 </html>
