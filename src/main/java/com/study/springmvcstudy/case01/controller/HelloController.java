@@ -26,7 +26,7 @@ public class HelloController {
 	// 1. 取得字串資料
 	// 路徑: /welcome
 	@RequestMapping("/welcome")
-	@ResponseBody // 直接根據回傳執型別回應
+	@ResponseBody // 直接根據回傳值型別回應
 	public String welcome() {
 		return "Hello SpringMVC " + new Date();
 	}
@@ -54,7 +54,7 @@ public class HelloController {
 			result = String.format("%.2f", bmi);
 		}
 
-		return String.format("bmi= %s", result);
+		return String.format("bmi = %s", result);
 	}
 
 	/*
@@ -163,7 +163,7 @@ public class HelloController {
 			httpSession.setAttribute(sessionKey, time);
 		}
 		
-		return String.format("firstAccessTime: %s sessionid: %s", time,httpSession.getId());
+		return String.format("firstAccessTime: %s \nsessionid: %s", time,httpSession.getId());
 	}
 
 }
