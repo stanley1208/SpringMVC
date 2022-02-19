@@ -3,6 +3,7 @@ package com.study.springmvcstudy.case02.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -44,5 +45,26 @@ public class RedirectController {
 		attr.addAttribute("username","Google");
 		attr.addAttribute("age","999");
 		return "redirect:/show_param.jsp";
+	}
+	
+	// 重定向帶參數 III (addFlashAttribute)
+	// http://localhost:8080/springmvcstudy/mvc/case02/redirect/saveOrder?name=iPhone&price=25000&qty=5
+	@RequestMapping("/saveOrder")
+	public String saveOrder(@RequestParam("name") String name,
+							@RequestParam("price") Integer price,
+							@RequestParam("qty") Integer qty,
+							RedirectAttributes attr) {
+		attr.addFlashAttribute("name",name);
+		attr.addFlashAttribute("price",price);
+		attr.addFlashAttribute("qty",qty);
+
+		
+		return "redirect:./success";
+		
+	}
+	
+	@RequestMapping("/success")
+	public String saveOrder() {
+		return "case02/order_ok";
 	}
 }
