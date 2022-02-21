@@ -9,7 +9,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/case02/redirect")
 public class RedirectController {
-	// 重新向 redirect:
+	// 重定向 redirect:
 	// 由 server 端重新 redirect 命令(會放在header中)給 client 端，並由 client 端去執行
 	// 所以 client 端的瀏覽網址不會改變
 	// 重定向可以只向內網與外網

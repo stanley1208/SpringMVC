@@ -46,7 +46,7 @@ public class TimeController {
 	}
 	
 	@GetMapping("/now4")
-	// @ResponseBody 不要加上 @ResponseBody
+	// @ResponseBody // 不要加上 @ResponseBody
 	public String getCurrentDateAndTime4(Model model) {
 		String time=timeService.getDateAndTimeStamp();
 		model.addAttribute("time",time);
