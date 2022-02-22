@@ -1,75 +1,66 @@
 package com.study.springmvcstudy.case03.controller;
 
-import java.util.Arrays;
-import java.util.Date;
+import java.util.Optional;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.study.springmvcstudy.case03.entity.Exam;
+import com.study.springmvcstudy.case03.service.ExamService;
 
+@Controller
+@RequestMapping("case03/exam")
 public class ExamController {
-	private String studentId; // 學員代號
-	private String examId; // 考試代號
-	private String[] examSlot; // 考試時段
-	@JsonFormat(pattern = "yyyy-MM-dd",timezone = "GMT+8") // 返回日期型態
-	@DateTimeFormat(pattern = "yyyy-MM-dd") // 接收日期類型
-	private Date examDate; // 考試日期
-	private Boolean examPay; // 繳費狀況:true(已繳費)，false(未繳費)
-	private String examNote; // 考況備註
 
-	public String getStudentId() {
-		return studentId;
+	@Autowired
+	private ExamService examService;
+
+	@GetMapping("/")
+	public String index(@ModelAttribute Exam exam, Model model) {
+
+		model.addAttribute("_method", "POST");
+		model.addAttribute("exams", examService.query());
+		return "case03/exam";
 	}
 
-	public void setStudentId(String studentId) {
-		this.studentId = studentId;
+	@GetMapping("/{index}")
+	public String get(@PathVariable("index") int index, Model model) {
+		Optional<Exam> optExam = examService.get(index);
+		if (optExam.isPresent()) {
+			model.addAttribute("_method", "POST");
+			model.addAttribute("exams", examService.query());
+			model.addAttribute("exam", optExam.get());
+			return "case03/exam";
+		}
+
+		// 沒找到資料，應該要透過統一錯誤處理機制進行...
+		return "redirect:./";
+
 	}
 
-	public String getExamId() {
-		return examId;
+	@PostMapping("/")
+	public String add(Exam exam) {
+		examService.add(exam);
+		return "redirect:./";
 	}
-
-	public void setExamId(String examId) {
-		this.examId = examId;
+	
+	@PutMapping("/{index}")
+	public String update(@PathVariable("index") int index,Exam exam) {
+		examService.update(index, exam);
+		return "redirect:./";
 	}
-
-	public String[] getExamSlot() {
-		return examSlot;
+	
+	@DeleteMapping("/{indx}")
+	public String delete(@PathVariable("index") int index) {
+		examService.delete(index);
+		return "redirect:./";
 	}
-
-	public void setExamSlot(String[] examSlot) {
-		this.examSlot = examSlot;
-	}
-
-	public Date getExamDate() {
-		return examDate;
-	}
-
-	public void setExamDate(Date examDate) {
-		this.examDate = examDate;
-	}
-
-	public Boolean getExamPay() {
-		return examPay;
-	}
-
-	public void setExamPay(Boolean examPay) {
-		this.examPay = examPay;
-	}
-
-	public String getExamNote() {
-		return examNote;
-	}
-
-	public void setExamNote(String examNote) {
-		this.examNote = examNote;
-	}
-
-	@Override
-	public String toString() {
-		return "ExamController [studentId=" + studentId + ", examId=" + examId + ", examSlot="
-				+ Arrays.toString(examSlot) + ", examDate=" + examDate + ", examPay=" + examPay + ", examNote="
-				+ examNote + "]";
-	}
-
 }

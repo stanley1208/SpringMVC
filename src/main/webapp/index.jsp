@@ -43,6 +43,9 @@
 		<li>
 		<a href="./mvc/case01/hello/sessionInfo">./mvc/case01/hello/sessionInfo</a>
 		</li>
+		<li>
+		<a href="./mvc/case03/exam/">./mvc/case03/exam/</a>
+		</li>
 	</ol>
 </body>
 </html>

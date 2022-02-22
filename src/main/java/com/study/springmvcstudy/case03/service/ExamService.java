@@ -49,7 +49,7 @@ public class ExamService {
 	
 	
 	// 刪除
-	public synchronized Boolean remove(int index,Exam exam) {
+	public synchronized Boolean delete(int index) {
 		if(index<0 || exams.size()==0 || index >=exams.size()) {
 			return false;
 		}
