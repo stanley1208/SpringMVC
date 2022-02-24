@@ -58,7 +58,13 @@ public class ExamController {
 		return "redirect:./";
 	}
 	
-	@DeleteMapping("/{indx}")
+	@PutMapping("/{index}/exam_note")
+	public String updateExamNote(@PathVariable("index") int index,Exam exam) {
+		examService.updateExamNote(index, exam.getExamNote());
+		return "redirect:../";
+	}
+	
+	@DeleteMapping("/{index}")
 	public String delete(@PathVariable("index") int index) {
 		examService.delete(index);
 		return "redirect:./";

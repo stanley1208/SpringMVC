@@ -23,7 +23,9 @@
 		<tbody>
 			<c:forEach varStatus="status" var="exam" items="${exams }">
 				<tr>
-					<td>${ status.index }</td>
+					<td>
+						<a href="${ pageContext.request.contextPath }/mvc/case03/exam/${ status.index }">${ status.index }</a>
+					</td>
 					<td>${ exam.studentId }</td>
 					<td>${ exam.examId }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
@@ -32,7 +34,7 @@
 						${ slot }
 					</c:forEach></td>
 					<td>${ exam.examPay?'已繳':'未繳' }</td>
-					<td>${ exam.examNote }</td>
+					<td onclick="updateExamNote(${status.index},'${exam.examNote}')" style="color: blue;text-decoration: underline;cursor: pointer;">${ exam.examNote }</td>
 
 				</tr>
 			</c:forEach>
