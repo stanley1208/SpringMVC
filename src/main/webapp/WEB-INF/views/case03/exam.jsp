@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet"
-	href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
-<meta charset="UTF-8">
-<title>Exam Form</title>
+	<%@ include file="include/header.jspf" %>
 </head>
-<body style="padding: 15px">
-	<table width="100%">
+<body class="exambody">
+	<table class="examtable">
 		<tr>
 			<!-- Exam Form -->
 			<td valign="top">
@@ -20,6 +17,6 @@
 		</tr>
 		
 	</table>
-	
+	<%@ include file="include/footer.jspf" %>
 </body>
 </html>
