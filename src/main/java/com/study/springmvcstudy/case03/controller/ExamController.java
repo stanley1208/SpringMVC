@@ -35,7 +35,7 @@ public class ExamController {
 	public String get(@PathVariable("index") int index, Model model) {
 		Optional<Exam> optExam = examService.get(index);
 		if (optExam.isPresent()) {
-			model.addAttribute("_method", "POST");
+			model.addAttribute("_method", "PUT");
 			model.addAttribute("exams", examService.query());
 			model.addAttribute("exam", optExam.get());
 			return "case03/exam";

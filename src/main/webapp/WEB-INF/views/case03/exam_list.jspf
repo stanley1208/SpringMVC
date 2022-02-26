@@ -30,7 +30,7 @@
 					<td>${ exam.examId }</td>
 					<td><fmt:formatDate pattern="yyyy-MM-dd"
 							value="${ exam.examDate }" />
-					<td><c:forEach var="slot" items="${exam.examSlot }">
+					<td><c:forEach var="slot" items="${ exam.examSlot }">
 						${ slot }
 					</c:forEach></td>
 					<td>${ exam.examPay?'已繳':'未繳' }</td>

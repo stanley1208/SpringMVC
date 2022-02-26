@@ -1,4 +1,3 @@
-
 function updateExamNote(index, examNote) {
 	var newExamNote = prompt('請輸入考試備註(examNote)資料', examNote);
 	document.getElementById('_method').value = 'PUT';
@@ -11,6 +10,7 @@ function updateExam(index) {
 	document.getElementById('exam').action = '/springmvcstudy/mvc/case03/exam/' + index;
 	document.getElementById('exam').submit();
 }
+
 function deleteExam(index) {
 	document.getElementById('_method').value = 'DELETE';
 	updateExam(index);
