@@ -28,6 +28,7 @@ public class ExamController {
 
 		model.addAttribute("_method", "POST");
 		model.addAttribute("exams", examService.query());
+		model.addAttribute("examSubjects",examService.queryExamSubjectList());
 		return "case03/exam";
 	}
 

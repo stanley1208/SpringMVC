@@ -10,11 +10,25 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 import com.study.springmvcstudy.case03.entity.Exam;
+import com.study.springmvcstudy.case03.entity.ExamSubject;
 
 @Service
 public class ExamService {
 	private List<Exam> exams = new CopyOnWriteArrayList<>(); // 註冊考試的紀錄集合
-
+	private List<ExamSubject>examSubjects=new CopyOnWriteArrayList<>();
+	
+	{
+		examSubjects.add(new ExamSubject("808","JavaSE 8 OCP I"));
+		examSubjects.add(new ExamSubject("809","JavaSE 8 OCP II"));
+		examSubjects.add(new ExamSubject("819","JavaSE 11 OCP "));
+		examSubjects.add(new ExamSubject("900","JavaEE 7 OCP "));
+	}
+	
+	//查詢所有 exam subject
+	public List<ExamSubject>queryExamSubjectList(){
+		return examSubjects;
+	}
+	
 	// 首頁(查詢多筆)
 	public List<Exam> query() {
 

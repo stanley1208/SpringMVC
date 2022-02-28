@@ -20,16 +20,15 @@
 			科目:
 			<spform:select path="examId">
 				<spform:option value="">請選擇</spform:option>
-				<spform:option value="809">Java 8 OCP I</spform:option>
-				<spform:option value="819">Java 8 OCP II</spform:option>
-				<spform:option value="900">Java 11 OCP</spform:option>
-				<spform:option value="">JavaWeb OCP</spform:option>
+				<spform:options items="${ examSubjects }" itemValue="id" itemLabel="name" />
+				
 			</spform:select>
 			<p />
 			日期:
 			<spform:input path="examDate" type="date" />
 			<p />
 			時段:
+			<!--Homework 時段改成:spform:checkboxs -->
 			<spform:checkbox path="examSlot" value="A" />
 			上午(A)
 			<spform:checkbox path="examSlot" value="B" />
@@ -38,6 +37,7 @@
 			晚上(C)
 			<p />
 			繳費:
+			<!-- Homework 繳費 spform:radiobuttons -->
 			<spform:radiobutton path="examPay" value="true" />
 			已繳
 			<spform:radiobutton path="examPay" value="false" />
