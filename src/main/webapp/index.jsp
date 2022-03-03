@@ -49,6 +49,9 @@
 		<li>
 		<a href="./mvc/case04/person/">./mvc/case04/person/</a>
 		</li>
+		<li>
+		<a href="./mvc/case04/stock/">./mvc/case04/stock/</a>
+		</li>
 	</ol>
 </body>
 </html>

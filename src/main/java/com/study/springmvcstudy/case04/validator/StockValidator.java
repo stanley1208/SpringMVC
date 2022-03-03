@@ -39,7 +39,15 @@ public class StockValidator implements Validator {
 
 			// 1. 買進價格必須是昨日收盤價的±10%之間 ( {0} ~ {1} )
 			if (price < previousClose * 0.9 || price > previousClose * 1.1) {
-				errors.rejectValue("price", "stock.price.range");
+//				errors.rejectValue("price", "stock.price.range");
+				
+				errors.rejectValue("price", "stock.price.range",
+						new Object[] {(previousClose * 0.9),(previousClose * 1.1)},
+							"買進價格必須是昨日收盤價的±10%之間"); // default_message
+				// 貼心告知現在該股票得昨收與目前價格
+				double currentPrice=yStock.getQuote().getPrice().doubleValue();
+				errors.reject("price_info", 
+						String.format("昨收:%.2f 最新成交價:%.2f", previousClose,currentPrice));
 			}
 			// 2. 買進股數必須大於或等於1000
 			if (amount < 1000) {
