@@ -42,7 +42,7 @@
 			<button type="submit" class="pure-button pure-button-primary">新增</button>
 			
 			<p />
-			<spform:errors path="*" cssClass="error"></spform:errors>
+			<spform:errors path="*" cssClass="info"/>
 		</fieldset>
 	</spform:form>
 	<table class="pure-table pure-table-bordered">
