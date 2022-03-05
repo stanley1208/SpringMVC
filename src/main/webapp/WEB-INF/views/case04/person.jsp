@@ -40,7 +40,7 @@
 			<button type="submit" class="pure-button pure-button-primary" ${ _method=='POST'?'':'disabled'}>新增</button>
 			<button type="submit" class="pure-button pure-button-primary" ${ _method=='PUT'?'':'disabled'}>修改</button>
 			<p />
-			<spform:errors path="" cssClass="error" />
+			<spform:errors path="*" cssClass="error" />
 		</fieldset>
 	</spform:form>
 	<table class="pure-table pure-table-bordered">

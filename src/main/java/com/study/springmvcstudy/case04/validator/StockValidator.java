@@ -25,7 +25,7 @@ public class StockValidator implements Validator {
 		ValidationUtils.rejectIfEmpty(errors, "symbol", "stock.symbol.empty");
 		ValidationUtils.rejectIfEmpty(errors, "price", "stock.price.empty");
 		ValidationUtils.rejectIfEmpty(errors, "amount", "stock.amount.empty");
-
+		
 		// 進階驗證
 		yahoofinance.Stock yStock = null;
 		try {
@@ -44,7 +44,7 @@ public class StockValidator implements Validator {
 				errors.rejectValue("price", "stock.price.range",
 						new Object[] {(previousClose * 0.9),(previousClose * 1.1)},
 							"買進價格必須是昨日收盤價的±10%之間"); // default_message
-				// 貼心告知現在該股票得昨收與目前價格
+				// 貼心告知現在該股票的昨收與目前價格
 				double currentPrice=yStock.getQuote().getPrice().doubleValue();
 				errors.reject("price_info", 
 						String.format("昨收:%.2f 最新成交價:%.2f", previousClose,currentPrice));
@@ -54,11 +54,12 @@ public class StockValidator implements Validator {
 				errors.rejectValue("amount", "stock.amount.notenough");
 
 			}
+			// 3. 買進股數必須是1000的倍數(1000股 = 1張)
 			if (amount % 1000 != 0) {
 				errors.rejectValue("amount", "stock.amount.range");
 
 			}
-			// 3. 買進股數必須是1000的倍數(1000股 = 1張)
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 			if (yStock == null) {
