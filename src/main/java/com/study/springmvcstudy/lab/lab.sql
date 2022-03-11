@@ -37,3 +37,27 @@ insert into fundstock(fid,symbol,share) values (5,"1101.TW",20000);
 insert into fundstock(fid,symbol,share) values (5,"2317.TW",10000);
 insert into fundstock(fid,symbol,share) values (5,"2886.TW",20000);
 insert into fundstock(fid,symbol,share) values (5,"2002.TW",30000);
+
+insert into fundstock(fid,symbol,share) values ("2480.TW");
+insert into fundstock(fid,symbol,share) values ("1201.TW");
+insert into fundstock(fid,symbol,share) values ("1216.TW");
+
+-- 向左關聯
+select f.fid , f.fname , f.createtime ,
+s.sid , s.fid , s.symbol , s.share 
+from fund f left join fundstock s
+on f.fid = s.fid 
+
+-- 向左關聯差集
+select f.fid , f.fname , f.createtime ,
+s.sid , s.fid , s.symbol , s.share 
+from fund f left join fundstock s
+on f.fid = s.fid 
+where s.fid is null
+
+-- 向右關聯差集
+select f.fid , f.fname , f.createtime ,
+s.sid , s.fid , s.symbol , s.share 
+from fund f right join fundstock s
+on f.fid = s.fid 
+where s.fid is null
