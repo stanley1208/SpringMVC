@@ -3,9 +3,15 @@ package com.study.springmvcstudy.lab.entity;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Fund {
 	private Integer fid;
 	private String fname;
+	@JsonFormat(pattern = "yyyy-MM-dd", timezone = "GMT+8") // 返回日期型態
+	@DateTimeFormat(pattern = "yyyy-MM-dd") // 接收日期類型
 	private Date createtime;
 	private List<Fundstock>fundstocks;
 	
