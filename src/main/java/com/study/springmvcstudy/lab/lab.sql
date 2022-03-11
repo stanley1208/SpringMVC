@@ -61,3 +61,7 @@ s.sid , s.fid , s.symbol , s.share
 from fund f right join fundstock s
 on f.fid = s.fid 
 where s.fid is null
+
+表一
+union
+表二
