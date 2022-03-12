@@ -52,6 +52,12 @@
 		<li>
 		<a href="./mvc/case04/stock/">./mvc/case04/stock/</a>
 		</li>
+		<li>
+		<a href="./mvc/lab/fund/">./mvc/lab/fund/</a>
+		</li>
+		<li>
+		<a href="./mvc/lab/fundstock/">./mvc/lab/fundstock/</a>
+		</li>
 	</ol>
 </body>
 </html>
