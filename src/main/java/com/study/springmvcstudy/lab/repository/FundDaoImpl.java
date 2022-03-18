@@ -41,7 +41,7 @@ public class FundDaoImpl implements FundDao {
 			// 根據 fid 查詢 fundstock 列表
 			String sql2 = "select s.sid,s.fid,s.symbol,s.share " 
 							+ "from fundstock s " 
-							+ "where s.sid = ? "
+							+ "where s.fid = ? "
 							+ "order by s.sid";
 			Object[] args = { fund.getFid() };
 			List<Fundstock> fundstocks = jdbcTemplate.query(sql2, args,
