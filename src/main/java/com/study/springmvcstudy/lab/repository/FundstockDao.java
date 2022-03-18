@@ -25,5 +25,5 @@ public interface FundstockDao {
 
 	// 刪除
 	int delete(Integer sid);
-	// 查詢
+	
 }
