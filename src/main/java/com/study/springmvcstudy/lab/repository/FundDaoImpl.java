@@ -53,7 +53,7 @@ public class FundDaoImpl implements FundDao {
 		return jdbcTemplate.query(sql, rm);
 	}
 	
-	// SumpleFlatMapping
+	// SimpleFlatMapping
 	// 調用 org.simpleflatmapper.jdbc.spring.jdbcTemplateMapperFactory
 	private List<Fund>queryAllCase3(){
 		// fundstocks_sid 其中 fundstocks 指的是 Fund.java 一對多的屬性命名

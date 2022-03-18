@@ -38,9 +38,9 @@ insert into fundstock(fid,symbol,share) values (5,"2317.TW",10000);
 insert into fundstock(fid,symbol,share) values (5,"2886.TW",20000);
 insert into fundstock(fid,symbol,share) values (5,"2002.TW",30000);
 
-insert into fundstock(fid,symbol,share) values ("2480.TW");
-insert into fundstock(fid,symbol,share) values ("1201.TW");
-insert into fundstock(fid,symbol,share) values ("1216.TW");
+insert into fundstock(symbol) values ("2480.TW");
+insert into fundstock(symbol) values ("1201.TW");
+insert into fundstock(symbol) values ("1216.TW");
 
 -- 向左關聯
 select f.fid , f.fname , f.createtime ,
