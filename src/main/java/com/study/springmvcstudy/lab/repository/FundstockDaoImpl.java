@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import com.study.springmvcstudy.lab.entity.Fund;
@@ -56,9 +57,25 @@ public class FundstockDaoImpl implements FundstockDao{
 	}
 
 	@Override
-	public FundstockDao get(Integer sid) {
-		// TODO Auto-generated method stub
-		return null;
+	public Fundstock get(Integer sid) {
+		// 先找到 fundstock
+		String sql="select s.sid , s.fid , s.symbol , s.share "
+				+ "from fundstock s "
+				+ "where s.sid = ?";
+		Fundstock fundstock=jdbcTemplate.queryForObject(sql, 
+											new BeanPropertyRowMapper<Fundstock>(Fundstock.class),
+											sid);
+
+		// 再透過 fundstock.getFid() 找到 fund
+		sql="select f.fid , f.fname , f.createtime "
+				+ "from fund f "
+				+ "where f.fid = ?";
+		Fund fund=jdbcTemplate.queryForObject(sql, 
+											new BeanPropertyRowMapper<Fund>(Fund.class),
+											fundstock.getFid());
+		// 找到 fund						
+		fundstock.setFund(fund);
+		return fundstock;
 	}
 
 	@Override

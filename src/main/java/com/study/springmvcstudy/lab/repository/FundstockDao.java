@@ -15,7 +15,7 @@ public interface FundstockDao {
 	List<Fundstock> queryPage(int offset);
 
 	// 取得單筆
-	FundstockDao get(Integer sid);
+	Fundstock get(Integer sid);
 
 	// 新增
 	int add(Fundstock fundstock);
