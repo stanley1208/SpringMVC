@@ -12,7 +12,7 @@ public interface FundstockDao {
 	List<Fundstock> queryAll();
 
 	// 分業查詢
-	List<FundstockDao> queryPage(int offset);
+	List<Fundstock> queryPage(int offset);
 
 	// 取得單筆
 	FundstockDao get(Integer sid);
