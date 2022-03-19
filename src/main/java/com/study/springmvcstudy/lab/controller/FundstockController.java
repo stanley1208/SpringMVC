@@ -1,6 +1,8 @@
 package com.study.springmvcstudy.lab.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,8 +56,20 @@ public class FundstockController {
 	}
 	
 	@GetMapping("/{sid}")
-	
+	@ResponseBody
 	public Fundstock get(@PathVariable("sid") Integer sid) {
 		return fundstockDao.get(sid);
+	}
+	
+	@GetMapping("/test/group")
+	@ResponseBody
+	public Map<String,Integer> test() {
+//		select s.symbol,sum(s.share) as share
+//		from fundstock s
+//		group by s.symbol 
+		List<Fundstock>fundstocks=fundstockDao.queryAll();
+		return fundstocks.stream()
+				.collect(Collectors.groupingBy(Fundstock::getSymbol,
+						Collectors.summingInt(Fundstock::getShare)));
 	}
 }
