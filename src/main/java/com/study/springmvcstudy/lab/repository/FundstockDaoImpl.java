@@ -73,11 +73,17 @@ public class FundstockDaoImpl implements FundstockDao{
 		Fund fund=jdbcTemplate.queryForObject(sql, 
 											new BeanPropertyRowMapper<Fund>(Fund.class),
 											fundstock.getFid());
-		// 找到 fund						
+		// 注入 fund						
 		fundstock.setFund(fund);
 		return fundstock;
 	}
 
+	@Override
+	public int count() {
+		String sql="select count(*) from fundstock";
+		return jdbcTemplate.queryForObject(sql, Integer.class);
+	}
+	
 	@Override
 	public int add(Fundstock fundstock) {
 		String sql="insert into fundstock(fid,symbol,share) values(?,?,?)";

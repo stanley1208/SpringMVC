@@ -30,7 +30,7 @@ public class FundstockController {
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute Fundstock fundstock,Model model){
-		return "redirect ./page/"+pageNumber;
+		return "redirect:./page/"+pageNumber;
 	}
 	
 	
@@ -44,7 +44,7 @@ public class FundstockController {
 		
 		List<Fund>funds=fundDao.queryAll();
 
-		int pageTotalCount=fundstocks.size()/FundstockDao.LIMIT;
+		int pageTotalCount=fundstockDao.count()/FundstockDao.LIMIT;
 		model.addAttribute("_method","POST");
 		model.addAttribute("fundstocks",fundstocks);
 		model.addAttribute("funds",funds);
