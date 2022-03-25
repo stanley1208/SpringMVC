@@ -37,7 +37,6 @@ public class FundstockController {
 	
 	
 	@GetMapping("/page/{pageNumber}")
-	
 	public String page(@PathVariable("pageNumber") int pageNumber,@ModelAttribute Fundstock fundstock,Model model){
 		// 1 -> 0, 2 -> 5, 3 -> 10
 		this.pageNumber=pageNumber;
