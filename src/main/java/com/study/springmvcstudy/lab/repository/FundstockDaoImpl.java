@@ -22,7 +22,7 @@ public class FundstockDaoImpl implements FundstockDao{
 	@Override
 	public List<Fundstock> queryAll() {
 		
-		// fundstocks_sid 其中 fundstocks 指的是 Fund.java 一對多的屬性命名
+		
 				String sql="select s.sid , s.fid , s.symbol , s.share , "
 						+ "f.fid as fund_fid, f.fname as fund_fname, f.createtime as fund_createtime "
 						+ "from fundstock s left join fund f "
@@ -100,7 +100,7 @@ public class FundstockDaoImpl implements FundstockDao{
 
 	@Override
 	public int delete(Integer sid) {
-		String sql="delete from fundstock whre sid=?";
+		String sql="delete from fundstock where sid=?";
 		int rowcount = jdbcTemplate.update(sql,sid);
 
 		return rowcount;
