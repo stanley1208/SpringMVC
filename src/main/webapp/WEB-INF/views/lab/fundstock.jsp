@@ -18,12 +18,32 @@
 	color: #FF0000
 }
 </style>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
+
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="${ pageContext.request.contextPath }/js/util.js"></script>
+<script type="text/javascript"
+	src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+	
+		
+	
       google.charts.load('current', {'packages':['corechart']});
       google.charts.setOnLoadCallback(drawChart);
-	  
       
+      function drawChart(){
+    	  drawChart(1);
+    	  drawStockChart('^TWII');
+      }
+      
+      function drawStockChart(symbol){
+    	  // http://localhost:8080/springmvcstudy/mvc/lab/price/histquotes/2330.TW
+    	  $.get("/springmvcstudy/mvc/lab/price/histquotes/"+symbol,function(quotes,status){
+    		  console.log("quotes:" + quotes);
+    		  console.log("status:" + status);
+    	  })
+      }
       
       function drawChart(chartId) {
 
@@ -60,14 +80,14 @@
 
         chart.draw(data, options);
       }
+	
     </script>
 </head>
 <body style="padding: 15px">
 	<table>
 		<tr>
 			<!-- Fundstock Form -->
-			<td valign="top">
-				<spform:form class="pure-form" method="post"
+			<td valign="top"><spform:form class="pure-form" method="post"
 					modelAttribute="fundstock"
 					action="${ pageContext.request.contextPath }/mvc/lab/fundstock/">
 					<fieldset>
@@ -82,12 +102,15 @@
 						<spform:errors path="symbol" cssClass="error" />
 						<p />
 						數量：
+
 						<spform:input path="share" type="date" />
 						<spform:errors path="share" cssClass="error" />
 						<p />
-						基金：<spform:select path="fid">
-								<spform:option value="">請選擇</spform:option>
-								<spform:options items="${ funds }" itemValue="fid" itemLabel="fname" />
+						基金：
+						<spform:select path="fid">
+							<spform:option value="">請選擇</spform:option>
+							<spform:options items="${ funds }" itemValue="fid"
+								itemLabel="fname" />
 						</spform:select>
 						<p />
 						<button type="submit" class="pure-button pure-button-primary"
@@ -103,12 +126,12 @@
 				<form class="pure-form">
 					<fieldset>
 						<legend>
-							Fundstock List&nbsp;|&nbsp;
-							<a href="${ pageContext.request.contextPath }/mvc/lab/fundstock/page/0">全部:</a>
-							&nbsp;|&nbsp;
-							分業:
+							Fundstock List&nbsp;|&nbsp; <a
+								href="${ pageContext.request.contextPath }/mvc/lab/fundstock/page/0">全部:</a>
+							&nbsp;|&nbsp; 分業:
 							<c:forEach var="num" begin="1" end="${ pageTotalCount+1 }">
-								<a href="${ pageContext.request.contextPath }/mvc/lab/fundstock/page/${num}">${ num }</a>
+								<a
+									href="${ pageContext.request.contextPath }/mvc/lab/fundstock/page/${num}">${ num }</a>
 							</c:forEach>
 						</legend>
 						<table class="pure-table pure-table-bordered">
@@ -140,21 +163,34 @@
 			<td valign="top">
 				<form class="pure-form">
 					<fieldset>
-						<legend>Fundstock Chart |
-						<a href="#" onclick="drawChart(1)">bar</a>
-						<a href="#" onclick="drawChart(2)">pie</a>
-						<a href="#" onclick="drawChart(3)">column</a>
-						<a href="#" onclick="drawChart(4)">line</a>
-						
+						<legend>
+							Fundstock Chart | <a href="#" onclick="drawChart(1)">bar</a> <a
+								href="#" onclick="drawChart(2)">pie</a> <a href="#"
+								onclick="drawChart(3)">column</a> <a href="#"
+								onclick="drawChart(4)">line</a>
+
 						</legend>
 						<div id="piechart" style="width: 500px; height: 300px;"></div>
 						<!-- 透過 JSTL 將 groupMap 依序印出 -->
-						
+
 					</fieldset>
 				</form>
 			</td>
 		</tr>
+		<tr>
+			<td colspan="3">
+				<form class="pure-form">
+					<fieldset>
+						<legend>
+							Fundstock Chart | <a href="#" onclick="drawStockChart('^TWII')">加權股價</a>
+						</legend>
+						<div id="stockchart" style="width: 1500px; height: 500px;"></div>
 
+
+					</fieldset>
+				</form>
+			</td>
+		</tr>
 	</table>
 
 
