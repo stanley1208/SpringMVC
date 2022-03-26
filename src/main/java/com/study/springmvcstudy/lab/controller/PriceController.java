@@ -25,7 +25,7 @@ public class PriceController {
 		from.add(Calendar.YEAR, -1); // from 1 year ago
 		List<HistoricalQuote> googleHistQuotes=null; 
 		try {
-			Stock google = YahooFinance.get("symbol");
+			Stock google = YahooFinance.get(symbol);
 			googleHistQuotes = google.getHistory(from, to, Interval.DAILY);
 			
 		} catch (Exception e) {
