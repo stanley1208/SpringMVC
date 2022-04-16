@@ -49,6 +49,7 @@
       function drawChartHist(symbol,quotes) {
 		// 建立 data 欄位
 		var data=new google.visualization.DataTable();
+		// 定義欄位
 		data.addColumn('string','Date');
 		data.addColumn('number','High');
 		data.addColumn('number','Open');
