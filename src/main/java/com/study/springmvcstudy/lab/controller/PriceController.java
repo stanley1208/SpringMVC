@@ -17,7 +17,7 @@ import yahoofinance.histquotes.Interval;
 @RequestMapping("lab/price")
 public class PriceController {
 	
-	// 範例:symbol = ^TWII 2330.TW
+	// 範例:symbol = ^TWII/2330.TW
 	@GetMapping("/histquotes/{symbol:.+}")
 	public List<HistoricalQuote>queryHistoricalQuotes(@PathVariable("symbol") String symbol){
 		Calendar from = Calendar.getInstance();
