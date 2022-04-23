@@ -58,6 +58,9 @@
 		<li>
 		<a href="./mvc/lab/fundstock/">./mvc/lab/fundstock/</a>
 		</li>
+		<li>
+		<a href="./html/fund.html">./html/fund.html</a>
+		</li>
 	</ol>
 </body>
 </html>

@@ -137,7 +137,7 @@
 					action="${ pageContext.request.contextPath }/mvc/lab/fundstock/">
 					<fieldset>
 						<legend>Fundstock Form | 
-						<a href="${ pageContext.request.contextPath }/mvc/lab/fund/">Fund Form</a>
+						<a href="${ pageContext.request.contextPath }/html/fund.html">Fund Form(Ajax)</a>
 						</legend>
 						<input type="hidden" id="_method" name="_method"
 							value="${ _method }"> 序號：
